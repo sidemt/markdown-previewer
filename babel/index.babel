@@ -1,8 +1,48 @@
-const JSX = (
-  <div>
-    <h1>Hello World</h1>
-    <p>Lets render this to the DOM</p>
-  </div>
-);
+const initialText = `# Header
+## sub header
+[link](#)  
+\`inline code\`
+\`\`\`
+code block
+\`\`\`
+- list item
+- list item
+- list item
+> blockquote
 
-ReactDOM.render(JSX, document.getElementById('challenge-node'));
+**bolded text**  
+![Sample Image](http://res.cloudinary.com/cd0hgkqgk/image/upload/c_scale,w_332/v1538183588/DSC05263_bq0daf.jpg)
+`;
+
+class ControlledInput extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      input: initialText
+    };
+  this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event){
+    this.setState({
+      input: event.target.value
+    });
+  }
+
+  render(){
+    // preview
+    document.getElementById('preview').innerHTML = marked(this.state.input);
+    // editor
+    return (
+      <div>
+        {/* Editor */}
+        <textarea name="" id="editor" cols="30" rows="10" onChange={this.handleChange}>
+          {this.state.input}
+        </textarea>
+      </div>
+    );
+  }
+};
+
+ReactDOM.render(<ControlledInput />, document.getElementById('root'));
+
