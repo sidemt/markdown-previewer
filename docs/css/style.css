@@ -1,0 +1,61 @@
+/* variables */
+.background {
+  --editor-height: 500px;
+}
+
+/* styles */
+.background {
+  background-color: hsl(282, 39%, 86%);
+  color: hsl(206, 59%, 15%);
+}
+
+.header {
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.sub-header {
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+
+#editor-container {
+  height: var(--editor-height);
+}
+
+#editor {
+  height: var(--editor-height);
+  width: 100%;
+}
+
+#preview {
+  background-color: hsl(282, 39%, 95%);
+  height: var(--editor-height);
+  overflow: auto;
+  padding: 10px 15px;
+}
+
+.footer {
+  padding: 2rem 0;
+  text-align: center;
+}
+
+/* Small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) {
+  /* variables */
+  .background {
+    --editor-height: 300px;
+  }
+  /* Styles */
+  #preview-container {
+    margin-top: 1rem;
+  }
+
+  #preview {
+    height: var(--editor-height);
+    overflow: auto;
+  }
+  #editor-container {
+    height: var(--editor-height);
+  }
+}
