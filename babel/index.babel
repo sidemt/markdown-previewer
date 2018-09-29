@@ -8,6 +8,7 @@ code block
 - list item
 - list item
 - list item
+
 > blockquote
 
 **bolded text**  
@@ -15,34 +16,41 @@ code block
 `;
 
 class ControlledInput extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       input: initialText
     };
-  this.handleChange = this.handleChange.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange(event){
+  handleChange(event) {
     this.setState({
       input: event.target.value
     });
   }
 
-  render(){
+  render() {
     // preview
-    document.getElementById('preview').innerHTML = marked(this.state.input);
+    document.getElementById("preview").innerHTML = marked(this.state.input);
     // editor
     return (
       <div>
         {/* Editor */}
-        <textarea name="" id="editor" cols="30" rows="10" onChange={this.handleChange}>
+        <textarea
+          name="editor"
+          id="editor"
+          className="form-control"
+          onChange={this.handleChange}
+        >
           {this.state.input}
         </textarea>
       </div>
     );
   }
-};
+}
 
-ReactDOM.render(<ControlledInput />, document.getElementById('root'));
-
+ReactDOM.render(
+  <ControlledInput />,
+  document.getElementById("editor-container")
+);
